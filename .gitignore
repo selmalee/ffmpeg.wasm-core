@@ -38,3 +38,4 @@
 /mapfile
 /tools/python/__pycache__/
 /build
+.DS_Store
