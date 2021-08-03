@@ -54,11 +54,14 @@ ARGS=(
   -s USE_SDL=2                    # use SDL2
   -s MODULARIZE=1                 # use modularized version to be more flexible
   -s EXPORT_NAME="createFFmpegCore"             # assign export name for browser
+  -s PROXY_TO_WORKER=1                         # uses a plain Web Worker to run your main program
+  -s ENVIRONMENT='web,worker'
   -s EXPORTED_FUNCTIONS="[_main]"  # export main and proxy_main funcs
   -s EXTRA_EXPORTED_RUNTIME_METHODS="[FS, cwrap, ccall, setValue, writeAsciiToMemory]"   # export preamble funcs
   -s INITIAL_MEMORY=2146435072      # 2146435072 bytes = 2GB
   -s ALLOW_MEMORY_GROWTH=1
   --post-js wasm/post-js.js
+  # -02
   -O3 # optimize code and reduce code size (from 30 MB to 15 MB)
 )
 emcc "${ARGS[@]}"
